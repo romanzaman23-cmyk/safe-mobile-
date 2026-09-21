@@ -49,28 +49,36 @@ function FloatingModeSwitcher() {
             Switch Application Portal
           </span>
           <Link
-            to="/admin/dashboard"
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors text-xs font-bold text-tertiary-fixed"
-          >
-            <span className="material-symbols-outlined text-[18px]">security</span>
-            <span>Super Admin SecOps</span>
-          </Link>
-          <Link
             to="/parent/dashboard"
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors text-xs font-bold text-primary-fixed"
           >
             <span className="material-symbols-outlined text-[18px]">shield</span>
-            <span>Parent Web Portal</span>
+            <span>🛡️ Parent Web Portal</span>
           </Link>
           <Link
-            to="/"
+            to="/parent/live-screen"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors text-xs font-bold text-emerald-400"
+          >
+            <span className="material-symbols-outlined text-[18px]">videocam</span>
+            <span>🔴 Live Screen Mirror</span>
+          </Link>
+          <Link
+            to="/admin/dashboard"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors text-xs font-bold text-tertiary-fixed"
+          >
+            <span className="material-symbols-outlined text-[18px]">security</span>
+            <span>⚡ Super Admin SecOps</span>
+          </Link>
+          <Link
+            to="/child"
             onClick={() => setOpen(false)}
             className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/10 transition-colors text-xs font-bold text-secondary-fixed"
           >
             <span className="material-symbols-outlined text-[18px]">smartphone</span>
-            <span>Child Companion App</span>
+            <span>📱 Child Companion App</span>
           </Link>
         </div>
       )}
@@ -102,8 +110,12 @@ export default function App() {
       <BrowserRouter>
         <div className="min-h-screen w-full bg-surface text-on-surface">
           <Routes>
+            {/* Default Homepage -> Parent Web Portal */}
+            <Route path="/" element={<Navigate to="/parent/dashboard" replace />} />
+
             {/* Child Companion App Routes */}
-            <Route path="/" element={<Home />} />
+            <Route path="/child" element={<Home />} />
+            <Route path="/child/login" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/connect-device" element={<ConnectDevice />} />
             <Route path="/permissions" element={<Permissions />} />

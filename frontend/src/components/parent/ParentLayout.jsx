@@ -27,9 +27,10 @@ export default function ParentLayout({ children, activeChild, onSelectChild }) {
   };
 
   const navItems = [
-    { path: '/parent/dashboard', label: 'Dashboard', icon: 'grid_view' },
-    { path: '/parent/live-screen', label: 'Live Screen', icon: 'screenshot_monitor' },
+    { path: '/parent/dashboard', label: 'Parent Dashboard', icon: 'grid_view' },
+    { path: '/parent/live-screen', label: 'Live Screen Mirror', icon: 'videocam' },
     { path: '/parent/fleet', label: 'Family Devices', icon: 'devices' },
+    { path: '/admin/dashboard', label: 'Super Admin SecOps', icon: 'security' },
     { path: '/parent/settings', label: 'Settings & Rules', icon: 'settings' },
     { path: '/parent/profile', label: 'Parent Profile', icon: 'account_circle' },
   ];
