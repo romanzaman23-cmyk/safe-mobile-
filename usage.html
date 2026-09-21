@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <title>SafeShield Child Companion - App Usage</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <style>
+    @layer base{
+      html,body{width:100%;min-height:100%;margin:0;padding:0;}
+      body{overscroll-behavior:none;}
+      .pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}
+      .pt-safe{padding-top:env(safe-area-inset-top,0px);}
+      main>:first-child{margin-top:0!important;}
+      main>:last-child{margin-bottom:0!important;}
+    }
+    ::-webkit-scrollbar{display:none;}
+    body { min-height: max(884px, 100dvh); }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = { 
+      darkMode: "class", 
+      theme: { 
+        extend: { 
+          colors: { 
+            "surface-container": "#e5eeff", 
+            "on-tertiary-fixed-variant": "#005236", 
+            "primary-fixed": "#dbe1ff", 
+            "on-tertiary": "#ffffff", 
+            "inverse-surface": "#213145", 
+            "on-primary-fixed": "#00174b", 
+            "secondary": "#4648d4", 
+            "inverse-primary": "#b4c5ff", 
+            "surface-bright": "#f8f9ff", 
+            "primary-container": "#2563eb", 
+            "surface-tint": "#0053db", 
+            "on-secondary-container": "#fffbff", 
+            "background": "#f8f9ff", 
+            "outline-variant": "#c3c6d7", 
+            "surface-container-low": "#eff4ff", 
+            "primary": "#004ac6", 
+            "tertiary-container": "#007d55", 
+            "tertiary": "#006242", 
+            "on-surface": "#0b1c30", 
+            "on-primary-fixed-variant": "#003ea8", 
+            "surface-container-lowest": "#ffffff", 
+            "secondary-fixed-dim": "#c0c1ff", 
+            "on-tertiary-fixed": "#002113", 
+            "secondary-container": "#6063ee", 
+            "error-container": "#ffdad6", 
+            "tertiary-fixed": "#6ffbbe", 
+            "on-primary": "#ffffff", 
+            "tertiary-fixed-dim": "#4edea3", 
+            "surface-container-high": "#dce9ff", 
+            "on-error-container": "#93000a", 
+            "surface": "#f8f9ff", 
+            "on-secondary-fixed": "#07006c", 
+            "on-secondary-fixed-variant": "#2f2ebe", 
+            "on-tertiary-container": "#bdffdb", 
+            "surface-variant": "#d3e4fe", 
+            "outline": "#737686", 
+            "surface-dim": "#cbdbf5", 
+            "inverse-on-surface": "#eaf1ff", 
+            "on-primary-container": "#eeefff", 
+            "on-background": "#0b1c30", 
+            "secondary-fixed": "#e1e0ff", 
+            "error": "#ba1a1a", 
+            "primary-fixed-dim": "#b4c5ff", 
+            "surface-container-highest": "#d3e4fe", 
+            "on-secondary": "#ffffff", 
+            "on-surface-variant": "#434655", 
+            "on-error": "#ffffff" 
+          }, 
+          borderRadius: { 
+            "DEFAULT": "0.25rem", 
+            "lg": "0.5rem", 
+            "xl": "0.75rem", 
+            "full": "9999px" 
+          }, 
+          spacing: { 
+            "space-sm": "0.5rem", 
+            "space-xl": "2rem", 
+            "gutter": "1rem", 
+            "space-md": "1rem", 
+            "margin": "1.25rem", 
+            "space-lg": "1.5rem", 
+            "space-xs": "0.25rem" 
+          }, 
+          fontFamily: { 
+            "headline-sm": ["Plus Jakarta Sans"], 
+            "headline-lg": ["Plus Jakarta Sans"], 
+            "headline-lg-mobile": ["Plus Jakarta Sans"], 
+            "label-lg": ["Plus Jakarta Sans"], 
+            "label-md": ["Plus Jakarta Sans"], 
+            "label-sm": ["Plus Jakarta Sans"], 
+            "headline-md": ["Plus Jakarta Sans"], 
+            "body-md": ["Inter"], 
+            "body-sm": ["Inter"], 
+            "body-lg": ["Inter"] 
+          }, 
+          fontSize: { 
+            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }], 
+            "headline-lg": ["30px", { lineHeight: "38px", fontWeight: "700" }], 
+            "headline-lg-mobile": ["26px", { lineHeight: "34px", fontWeight: "700" }], 
+            "label-lg": ["14px", { lineHeight: "20px", fontWeight: "600" }], 
+            "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }], 
+            "label-sm": ["11px", { lineHeight: "14px", fontWeight: "700" }], 
+            "headline-md": ["22px", { lineHeight: "28px", fontWeight: "600" }], 
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], 
+            "body-sm": ["12px", { lineHeight: "18px", fontWeight: "400" }], 
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }] 
+          } 
+        } 
+      } 
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-full flex flex-col justify-between items-center">
+  <div class="w-full max-w-md min-h-screen flex flex-col relative bg-surface shadow-2xl">
+    
+    <!-- Top Header -->
+    <header class="fixed top-0 w-full max-w-md z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+      <div class="h-6 px-margin flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm select-none">
+        <span>09:41</span>
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">signal_cellular_alt</span>
+          <span class="material-symbols-outlined text-[16px]">wifi</span>
+          <span class="material-symbols-outlined text-[18px]">battery_full</span>
+        </div>
+      </div>
+      <div class="h-14 px-margin flex items-center justify-between">
+        <div class="flex items-center gap-space-sm">
+          <img alt="SafeShield Child App Logo" class="h-8 w-auto object-contain" src="logo.svg"/>
+          <span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Usage</span>
+        </div>
+        <div class="flex items-center gap-space-xs">
+          <button class="w-11 h-11 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors focus:outline-none rounded-full" onclick="alert('Viewing screen time safety analytics.')">
+            <span class="material-symbols-outlined text-[24px]">help_outline</span>
+          </button>
+          <a href="settings.html">
+            <img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_1px_4px_rgba(0,0,0,0.08)] ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjj47UTVN4_aoK1nIlnVWckmMzQif0I5W7D2cBx3yDqZ-xAP1hK3jGc7vKYfDqtfDwRiZ7B172XGFp4ewNcat9jqyi6iXm9GBXrdQS3uAHpiSdbUrxAr9tRiFlTlGVWa0hNZBaiV5kas8GY6LonF-4CNx3-E-GYhyLxUmStyKE6EYHu4EVHDoPE05EDfEyaxRIcTdTMh_9kn-6nf6O3rvTSSr1ShF1pF_hy1HQ-iv4s4pD0q4D2shn-g"/>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col relative w-full px-margin pt-20 pb-24 bg-surface">
+      <div class="flex flex-col w-full gap-space-lg">
+        
+        <!-- Header Context & Day Selector -->
+        <section class="flex flex-col gap-space-sm pt-2">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="font-headline-md text-headline-md text-on-surface tracking-tight font-bold">App Usage & Screen Time</h1>
+              <p class="font-body-sm text-body-sm text-on-surface-variant">Track your daily screen limits and app time breakdown</p>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-primary shadow-sm">
+              <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">hourglass_top</span>
+            </div>
+          </div>
+
+          <!-- Day Selector Filter Pills -->
+          <div class="flex items-center gap-space-xs p-1 bg-surface-container rounded-full mt-2" role="tablist">
+            <button aria-selected="true" class="flex-1 py-2 rounded-full font-label-md text-label-md transition-all shadow-sm bg-surface-container-lowest text-primary text-center font-bold" role="tab">
+              Today
+            </button>
+            <button aria-selected="false" class="flex-1 py-2 rounded-full font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface text-center font-semibold" role="tab">
+              Yesterday
+            </button>
+            <button aria-selected="false" class="flex-1 py-2 rounded-full font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface text-center font-semibold" role="tab">
+              Weekly Summary
+            </button>
+          </div>
+        </section>
+
+        <!-- Hero Metric Cards Grid -->
+        <section class="grid grid-cols-1 gap-space-md">
+          <!-- Today's Screen Time Featured Card -->
+          <div class="relative overflow-hidden rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-md">
+            <div class="flex items-start justify-between">
+              <div class="flex flex-col">
+                <span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1 font-medium">
+                  <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+                  Today's Screen Time
+                </span>
+                <div class="flex items-baseline gap-space-xs mt-1">
+                  <span class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight font-bold">4h 32m</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant">/ 5h limit</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm shadow-xs font-semibold">
+                <span class="material-symbols-outlined text-[14px]">timelapse</span>
+                <span>90% used</span>
+              </div>
+            </div>
+
+            <!-- Tactile Segmented Progress Bar -->
+            <div class="flex flex-col gap-1.5">
+              <div class="h-3 w-full bg-surface-container-low rounded-full overflow-hidden p-0.5">
+                <div class="h-full rounded-full bg-secondary transition-all duration-700 shadow-sm" style="width: 90%;"></div>
+              </div>
+              <div class="flex items-center justify-between font-label-sm text-label-sm">
+                <span class="text-secondary font-semibold flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">warning</span>
+                  28m remaining today
+                </span>
+                <span class="text-on-surface-variant">Daily Cap: 5h 00m</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weekly Screen Time Digest Card -->
+          <div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-space-md">
+              <div class="w-12 h-12 rounded-xl bg-tertiary-fixed/30 text-tertiary flex items-center justify-center">
+                <span class="material-symbols-outlined text-[26px]">insights</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Weekly Total</span>
+                <span class="font-headline-sm text-headline-sm text-on-surface font-bold">28h 45m</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant">Daily avg: 4h 06m</span>
+              </div>
+            </div>
+            <div class="flex flex-col items-end justify-center">
+              <div class="flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold">
+                <span class="material-symbols-outlined text-[14px]">trending_down</span>
+                <span>-12%</span>
+              </div>
+              <span class="font-body-sm text-body-sm text-on-surface-variant mt-1 text-right">vs last week</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Most Used Apps Section -->
+        <section class="flex flex-col gap-space-sm">
+          <div class="flex items-center justify-between">
+            <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Most Used Apps</h2>
+            <span class="font-label-sm text-label-sm text-primary font-semibold cursor-pointer">View App Limits</span>
+          </div>
+
+          <div class="flex flex-col gap-space-xs">
+            <!-- App 1: WhatsApp -->
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                  <div class="w-11 h-11 rounded-xl bg-tertiary-container text-on-tertiary flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[24px]">chat</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-label-lg text-label-lg text-on-surface font-bold">WhatsApp</span>
+                      <span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Social</span>
+                    </div>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">No limit set</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="font-headline-sm text-headline-sm text-on-surface font-bold">1h 42m</span>
+                  <span class="font-label-sm text-label-sm text-tertiary font-medium">Safe Pace</span>
+                </div>
+              </div>
+              <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-tertiary-container" style="width: 40%;"></div>
+              </div>
+            </div>
+
+            <!-- App 2: TikTok -->
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                  <div class="w-11 h-11 rounded-xl bg-inverse-surface text-inverse-on-surface flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[24px]">music_note</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-label-lg text-label-lg text-on-surface font-bold">TikTok</span>
+                      <span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">15m left</span>
+                    </div>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">1h 30m Daily Limit</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="font-headline-sm text-headline-sm text-secondary font-bold">1h 15m</span>
+                  <span class="font-label-sm text-label-sm text-secondary font-semibold">Near Limit</span>
+                </div>
+              </div>
+              <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-secondary" style="width: 83%;"></div>
+              </div>
+            </div>
+
+            <!-- App 3: Snapchat -->
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                  <div class="w-11 h-11 rounded-xl bg-surface-container-highest text-on-surface flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[24px]">camera</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-label-lg text-label-lg text-on-surface font-bold">Snapchat</span>
+                      <span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Social</span>
+                    </div>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">1h 00m Daily Limit</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="font-headline-sm text-headline-sm text-on-surface font-bold">48m</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant">12m left</span>
+                </div>
+              </div>
+              <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-primary" style="width: 80%;"></div>
+              </div>
+            </div>
+
+            <!-- App 4: Facebook -->
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                  <div class="w-11 h-11 rounded-xl bg-primary-fixed text-primary flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[24px]">public</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-label-lg text-label-lg text-on-surface font-bold">Facebook</span>
+                      <span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Media</span>
+                    </div>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">No limit set</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="font-headline-sm text-headline-sm text-on-surface font-bold">32m</span>
+                  <span class="font-label-sm text-label-sm text-tertiary font-medium">Safe Pace</span>
+                </div>
+              </div>
+              <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-primary-container" style="width: 25%;"></div>
+              </div>
+            </div>
+
+            <!-- App 5: YouTube Kids -->
+            <div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-space-md">
+                  <div class="w-11 h-11 rounded-xl bg-error-container text-error flex items-center justify-center shadow-xs">
+                    <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">smart_display</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-label-lg text-label-lg text-on-surface font-bold">YouTube Kids</span>
+                      <span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Learning</span>
+                    </div>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant">Whitelisted safe app</span>
+                  </div>
+                </div>
+                <div class="flex flex-col items-end">
+                  <span class="font-headline-sm text-headline-sm text-on-surface font-bold">15m</span>
+                  <span class="font-label-sm text-label-sm text-tertiary font-medium">Active</span>
+                </div>
+              </div>
+              <div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-tertiary" style="width: 12%;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bedtime & Downtime Schedule Rules Card -->
+        <section class="rounded-xl bg-surface-container-high p-space-md flex flex-col gap-space-md shadow-sm">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-space-sm">
+              <div class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center shadow-xs">
+                <span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">bedtime</span>
+              </div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Downtime Schedule</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Starts at 21:30 PM • School night</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-bold">
+              Active 9:30 PM
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-space-xs bg-surface-container-lowest p-space-sm rounded-lg">
+            <span class="font-label-sm text-label-sm text-on-surface-variant">Allowed apps during downtime:</span>
+            <div class="flex items-center gap-space-sm pt-1">
+              <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+                <span class="material-symbols-outlined text-[16px] text-primary">call</span>
+                <span>Phone</span>
+              </div>
+              <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+                <span class="material-symbols-outlined text-[16px] text-tertiary">chat</span>
+                <span>Messages</span>
+              </div>
+              <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+                <span class="material-symbols-outlined text-[16px] text-primary">shield</span>
+                <span>SafeShield</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="w-full h-12 rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md transition-transform active:scale-[0.98] font-bold cursor-pointer" id="requestExtensionBtn">
+            <span class="material-symbols-outlined text-[20px]">hourglass_empty</span>
+            <span>Request Time Extension</span>
+          </button>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 w-full max-w-md z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(15,23,42,0.05)]">
+      <div class="flex justify-around items-center h-16 px-space-xs">
+        <a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-full text-on-surface-variant hover:text-primary transition-all gap-0.5" href="index.html">
+          <span class="material-symbols-outlined text-[22px]">home</span>
+          <span class="font-label-sm text-label-sm font-semibold">Home</span>
+        </a>
+        <a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-full transition-all gap-0.5 bg-surface-container-low text-primary" href="usage.html">
+          <span class="material-symbols-outlined text-[22px]">bar_chart</span>
+          <span class="font-label-sm text-label-sm font-semibold">Usage</span>
+        </a>
+        <a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-full text-on-surface-variant hover:text-primary transition-all gap-0.5" href="permissions.html">
+          <span class="material-symbols-outlined text-[22px]">verified_user</span>
+          <span class="font-label-sm text-label-sm font-semibold">Permissions</span>
+        </a>
+        <a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-full text-on-surface-variant hover:text-primary transition-all gap-0.5 relative" href="permission-success.html">
+          <div class="relative flex items-center justify-center">
+            <span class="material-symbols-outlined text-[22px]">notifications</span>
+            <span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+          </div>
+          <span class="font-label-sm text-label-sm font-semibold">Alerts</span>
+        </a>
+        <a class="flex flex-col items-center justify-center min-w-[56px] h-12 rounded-full text-on-surface-variant hover:text-primary transition-all gap-0.5" href="settings.html">
+          <span class="material-symbols-outlined text-[22px]">tune</span>
+          <span class="font-label-sm text-label-sm font-semibold">Settings</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <script>
+    document.getElementById('requestExtensionBtn')?.addEventListener('click', function() {
+      const btn = this;
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.classList.add('bg-tertiary');
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">sync</span><span>Sending Request to Parent...</span>';
+      
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span><span>Request Sent (+30 min)</span>';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('bg-tertiary');
+          btn.disabled = false;
+        }, 3000);
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
